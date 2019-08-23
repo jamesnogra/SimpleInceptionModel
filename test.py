@@ -15,6 +15,7 @@ if (settings.IMAGE_CHANNELS==1):
 elif (settings.IMAGE_CHANNELS==3):
 	test_image = cv2.imread(temp_image)
 test_image = cv2.resize(test_image, (settings.IMG_SIZE, settings.IMG_SIZE))
+test_image = test_image/255 #normalize the test image because we normalize the training images
 
 #getting all folders
 def define_classes():

@@ -39,7 +39,7 @@ def create_train_data(all_classes, all_labels):
 			elif (settings.IMAGE_CHANNELS==3):
 				img = cv2.imread(path)
 			img = cv2.resize(img, (settings.IMG_SIZE, settings.IMG_SIZE))
-			training_data.append([np.array(img)/255, np.array(all_labels[label_index])])
+			training_data.append([np.array(img)/255, np.array(all_labels[label_index])]) #we normalize the images hence the /255
 		label_index = label_index + 1
 	shuffle(training_data)
 	return training_data

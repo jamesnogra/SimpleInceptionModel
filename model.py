@@ -44,6 +44,24 @@ print("Inception 2 Shape: ", inception_2.get_shape())
 #resize dimension to half
 inception_2 = max_pool_2d(inception_2, 2)
 
-output = fully_connected(inception_2, settings.FIRST_NUM_CHANNEL*16, activation='relu')
+#tower 1 is a 1x1 convolution followed by a 3x3 convolution
+tower_3_1 = conv_2d(inception_2, settings.FIRST_NUM_CHANNEL*4, 1, padding='same', activation='relu')
+tower_3_1 = conv_2d(tower_3_1, settings.FIRST_NUM_CHANNEL*4, 3, padding='same', activation='relu')
+
+#tower 2 is a 1x1 convolution followed by a 5x5 convolution
+tower_3_2 = conv_2d(inception_2, settings.FIRST_NUM_CHANNEL*4, 1, padding='same', activation='relu')
+tower_3_2 = conv_2d(tower_3_2, settings.FIRST_NUM_CHANNEL*4, 5, padding='same', activation='relu')
+
+#tower 3 is just a 1x1 convolution
+tower_3_3 = conv_2d(inception_2, settings.FIRST_NUM_CHANNEL*8, 1, padding='same', activation='relu')
+
+#the second inception layer is now a (IMG_SIZE/2)x(IMG_SIZE/2) image but has 64 channels
+inception_3 = merge([tower_3_1, tower_3_2, tower_3_3], mode='concat', axis=3, name='Merge')
+print("Inception 3 Shape: ", inception_3.get_shape())
+
+#resize dimension to half
+inception_3 = max_pool_2d(inception_3, 2)
+
+output = fully_connected(inception_3, settings.FIRST_NUM_CHANNEL*16, activation='relu')
 output = dropout(output, 0.8)
 print("FC Shape: ", output.get_shape())
