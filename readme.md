@@ -4,7 +4,7 @@ Simple Inception Model is a simple inception model written in Python and uses te
 
 ## Installation
 
-For Windows 10 and Python 3.7 (64-bit), use the `tensorflow-1.14.0-cp37-cp37m-win_amd64.whl` instead of downloading tensorflow by yourself.
+Install first tensorflow. For Windows 10 and Python 3.7 (64-bit), use the `tensorflow-1.14.0-cp37-cp37m-win_amd64.whl` instead of downloading tensorflow by yourself.
 
 ```bash
 pip install tensorflow-1.14.0-cp37-cp37m-win_amd64.whl
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 ## Preparing Traning Data
 
-Inside the `\train` folder are folders for each classes. By default, the folders inside `\train` are five fruits containg `JPG` images. Only .JPG images works for now.
+Inside the `\train` folder are folders for each classes. By default, the folders inside `\train` are four fruit folders containg `JPG` images. Only .JPG images works for now.
 
 ## Modifying the Hyperparameters of the Model (Optional)
 
