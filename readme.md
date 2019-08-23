@@ -40,7 +40,7 @@ python train.py
 
 ## Detect/Classify Images
 
-After the training, a model is saved using the parameter `MODEL_NAME`. The `test.py` uses the same model to detect/classify images. To use the `test.py` script to detect/classify images, just run the command:
+After the training, a model is saved using the parameter `MODEL_NAME` inside the `settings.py`. The `test.py` uses the same model to detect/classify images. To use the `test.py` script to detect/classify images, just run the command:
 
 ```bash
 python test.py "C:\Users\my_user\images\applefruit.jpg"
