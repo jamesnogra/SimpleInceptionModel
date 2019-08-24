@@ -63,7 +63,7 @@ network = tflearn.regression(loss, optimizer='RMSprop', loss='categorical_crosse
 model = tflearn.DNN(network, checkpoint_path=settings.MODEL_NAME, max_checkpoints=1, tensorboard_verbose=2, tensorboard_dir="./tflearn_logs/")
 
 
-model.fit({'input': X}, {'targets': Y}, n_epoch=settings.NUM_EPOCHS, validation_set=({'input': test_x}, {'targets': test_y}), batch_size=32, snapshot_step=5000, show_metric=True, run_id=settings.MODEL_NAME)
+model.fit({'input': X}, {'targets': Y}, n_epoch=settings.NUM_EPOCHS, validation_set=({'input': test_x}, {'targets': test_y}), batch_size=64, snapshot_step=5000, show_metric=True, run_id=settings.MODEL_NAME)
 #model.fit({'input': X}, {'targets': Y}, n_epoch=NUM_EPOCHS, validation_set=({'input': test_x}, {'targets': test_y}), shuffle=True, show_metric=True, batch_size=32, snapshot_step=500, snapshot_epoch=False, run_id=MODEL_NAME)
 
 

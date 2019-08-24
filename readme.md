@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 ## Preparing Traning Data
 
-Inside the `\train` folder are folders for each classes. By default, the folders inside `\train` are four fruit folders containing `JPG` images. Only .JPG images works for now.
+Inside the `\train` folder are folders for each classes. By default, the folders inside `\train` are five fruit folders containing `JPG` images. Only .JPG images works for now.
 
 ## Modifying the Hyperparameters of the Model (Optional)
 

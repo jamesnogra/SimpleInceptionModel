@@ -19,7 +19,7 @@ tower_1_2 = conv_2d(tower_1_2, settings.FIRST_NUM_CHANNEL, 5, padding='same', ac
 #tower 3 is just a 1x1 convolution
 tower_1_3 = conv_2d(input, settings.FIRST_NUM_CHANNEL*2, 1, padding='same', activation='relu')
 
-#the first inception layer is still a IMG_SIZExIMG_SIZE image but has 64 channels
+#the first inception layer is still a IMG_SIZExIMG_SIZE
 inception_1 = merge([tower_1_1, tower_1_2, tower_1_3], mode='concat', axis=3, name='Merge')
 print("Inception 1 Shape: ", inception_1.get_shape())
 
@@ -27,17 +27,17 @@ print("Inception 1 Shape: ", inception_1.get_shape())
 inception_1 = max_pool_2d(inception_1, 2)
 
 #tower 1 is a 1x1 convolution followed by a 3x3 convolution
-tower_2_1 = conv_2d(inception_1, settings.FIRST_NUM_CHANNEL*4, 1, padding='same', activation='relu')
-tower_2_1 = conv_2d(tower_2_1, settings.FIRST_NUM_CHANNEL*4, 3, padding='same', activation='relu')
+tower_2_1 = conv_2d(inception_1, settings.FIRST_NUM_CHANNEL*2, 1, padding='same', activation='relu')
+tower_2_1 = conv_2d(tower_2_1, settings.FIRST_NUM_CHANNEL*2, 3, padding='same', activation='relu')
 
 #tower 2 is a 1x1 convolution followed by a 5x5 convolution
-tower_2_2 = conv_2d(inception_1, settings.FIRST_NUM_CHANNEL*4, 1, padding='same', activation='relu')
-tower_2_2 = conv_2d(tower_2_2, settings.FIRST_NUM_CHANNEL*4, 5, padding='same', activation='relu')
+tower_2_2 = conv_2d(inception_1, settings.FIRST_NUM_CHANNEL*2, 1, padding='same', activation='relu')
+tower_2_2 = conv_2d(tower_2_2, settings.FIRST_NUM_CHANNEL*2, 5, padding='same', activation='relu')
 
 #tower 3 is just a 1x1 convolution
-tower_2_3 = conv_2d(inception_1, settings.FIRST_NUM_CHANNEL*8, 1, padding='same', activation='relu')
+tower_2_3 = conv_2d(inception_1, settings.FIRST_NUM_CHANNEL*4, 1, padding='same', activation='relu')
 
-#the second inception layer is now a (IMG_SIZE/2)x(IMG_SIZE/2) image but has 64 channels
+#the second inception layer is now a (IMG_SIZE/2)x(IMG_SIZE/2) image
 inception_2 = merge([tower_2_1, tower_2_2, tower_2_3], mode='concat', axis=3, name='Merge')
 print("Inception 2 Shape: ", inception_2.get_shape())
 
@@ -55,7 +55,7 @@ tower_3_2 = conv_2d(tower_3_2, settings.FIRST_NUM_CHANNEL*4, 5, padding='same', 
 #tower 3 is just a 1x1 convolution
 tower_3_3 = conv_2d(inception_2, settings.FIRST_NUM_CHANNEL*8, 1, padding='same', activation='relu')
 
-#the second inception layer is now a (IMG_SIZE/2)x(IMG_SIZE/2) image but has 64 channels
+#the third inception layer is now a (IMG_SIZE/4)x(IMG_SIZE/4) image
 inception_3 = merge([tower_3_1, tower_3_2, tower_3_3], mode='concat', axis=3, name='Merge')
 print("Inception 3 Shape: ", inception_3.get_shape())
 
