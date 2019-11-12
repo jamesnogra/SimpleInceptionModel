@@ -13,7 +13,7 @@ pip install tensorflow-1.14.0-cp37-cp37m-win_amd64.whl
 If this fails, try to install just the regular tensorflow:
 
 ```bash
-pip install tensorflow
+pip install tensorflow==1.14.0
 ```
 
 After installing tensorflow, install the other libraries inside `requirements.txt`
